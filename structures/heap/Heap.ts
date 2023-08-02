@@ -1,11 +1,11 @@
-export class Heap {
+export class Heap<Type extends "min" | "max"> {
   // this should be ArrayList for best performance of push/pop operation
   private _list: number[];
   private _length: number;
 
-  public readonly type: "min" | "max";
+  public readonly type: Type;
 
-  constructor(type: "min" | "max") {
+  constructor(type: Type) {
     this._list = [];
     this._length = 0;
 
