@@ -112,8 +112,6 @@ export class Heap {
 
     if (!this.compare(parentValue, currentValue)) return;
 
-    // if (parentValue >= currentValue) return;
-
     this._list[currentIndex] = parentValue;
     this._list[parentIndex] = currentValue;
 
