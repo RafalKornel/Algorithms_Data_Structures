@@ -3,13 +3,13 @@ export class Heap {
   private _list: number[];
   private _length: number;
 
-  private _type: "min" | "max";
+  public readonly type: "min" | "max";
 
   constructor(type: "min" | "max") {
     this._list = [];
     this._length = 0;
 
-    this._type = type;
+    this.type = type;
   }
 
   get length() {
@@ -131,7 +131,7 @@ export class Heap {
   }
 
   private compare(parent: number, child: number, inclusive = false): boolean {
-    if (this._type === "max") {
+    if (this.type === "max") {
       return inclusive ? parent <= child : parent < child;
     } else {
       return inclusive ? parent >= child : parent > child;
