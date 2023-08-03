@@ -1,8 +1,11 @@
-export type WeightedAdjacencyMatrix = number[][];
+export type Index = number;
+export type Value = number;
+
+export type WeightedAdjacencyMatrix = Value[][];
 
 export type GraphNode = number; // index of Graph
 
-export type Edge = { to: GraphNode, weight: number };
+export type Edge = { to: GraphNode; weight: number };
 
 export type AdjacencyList = Edge[];
 
