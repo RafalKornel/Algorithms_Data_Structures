@@ -1,19 +1,28 @@
-import { Node } from "./Node.ts";
+import { Node } from "./types.ts";
 
-export class Queue<T> {
+interface IQueue<T> {
+  enqueue(value: T): void;
+  deque(): T | undefined;
+  peek(): T | undefined;
+
+  get size(): number;
+  get list(): T[];
+}
+
+export class Queue<T> implements IQueue<T> {
   private _head?: Node<T>;
   private _tail?: Node<T>;
-  private _length: number;
+  private _size: number;
 
   constructor() {
-    this._head = undefined; // { value: initialValue };
-    this._tail = undefined; // this._head;
+    this._head = undefined;
+    this._tail = undefined;
 
-    this._length = 0;
+    this._size = 0;
   }
 
   enqueue(value: T) {
-    this._length++;
+    this._size++;
 
     // entry to the queue
     if (!this._tail && !this._head) {
@@ -35,7 +44,7 @@ export class Queue<T> {
   deque(): T | undefined {
     if (!this._head) return undefined;
 
-    this._length--;
+    this._size--;
 
     const head = this._head;
     this._head = this._head.next;
@@ -49,48 +58,19 @@ export class Queue<T> {
     return this._head?.value;
   }
 
-  get length(): number {
-    return this._length;
+  get size(): number {
+    return this._size;
   }
 
-  print() {
-    let res = "[";
+  get list(): T[] {
+    const res = [];
     let curr = this._head;
 
     while (curr) {
-      res += `${curr.value}, `;
+      res.push(curr.value);
       curr = curr.next;
     }
 
-    res += "]";
-
-    console.log(res);
+    return res;
   }
 }
-
-function main() {
-  const q = new Queue<number>();
-
-  q.enqueue(1);
-  q.enqueue(2);
-  q.enqueue(3);
-
-  q.print();
-
-  console.log(q.peek());
-
-  q.deque();
-  q.print();
-  q.deque();
-  q.print();
-  q.deque();
-  q.print();
-
-  console.log(q.peek());
-
-  q.enqueue(4);
-  q.enqueue(5);
-
-  q.print();
-}
-
