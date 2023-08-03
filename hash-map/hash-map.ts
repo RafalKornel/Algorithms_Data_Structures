@@ -1,4 +1,4 @@
-import { UniDirectionalList } from "../linked/linked_list.ts";
+import { UniDirectionalList } from "../linked-list/linked-list.ts";
 
 interface IHashMap<TKey extends number | string, TValue> {
   get(key: TKey): TValue | undefined;

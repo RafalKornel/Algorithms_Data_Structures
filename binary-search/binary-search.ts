@@ -26,7 +26,7 @@ export function binarySearchIterative(haystack: number[], needle: number) {
   let hi = haystack.length;
 
   do {
-    let m = lo + Math.floor((hi - lo) / 2);
+    const m = lo + Math.floor((hi - lo) / 2);
 
     if (haystack[m] === needle) return m;
 

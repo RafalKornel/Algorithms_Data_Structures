@@ -32,7 +32,7 @@ export function bfs(
 
       q.enqueue(i);
     }
-  } while (q.length);
+  } while (q.size);
 
   let curr = needle;
   let path = [];
